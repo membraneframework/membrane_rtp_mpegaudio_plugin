@@ -6,7 +6,7 @@ It is part of [Membrane Multimedia Framework](https://membraneframework.org).
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed by adding `membrane_element_rtp` to your list of dependencies in `mix.exs`:
+If [available in Hex](https://hex.pm/docs/publish), the package can be installed by adding `membrane_element_rtp_mpegaudio` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
