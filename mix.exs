@@ -2,7 +2,7 @@ defmodule Membrane.Element.RTP.MPEGAudio.MixProject do
   use Mix.Project
 
   @version "0.2.0"
-  @github_url "https://github.com/membraneframework/membrane-element-rtp-mpeguadio"
+  @github_url "https://github.com/membraneframework/membrane-element-rtp-mpegaudio"
 
   def project do
     [
@@ -17,7 +17,13 @@ defmodule Membrane.Element.RTP.MPEGAudio.MixProject do
       source_url: @github_url,
       docs: docs(),
       homepage_url: "https://membraneframework.org",
-      deps: deps()
+      deps: deps(),
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -57,7 +63,8 @@ defmodule Membrane.Element.RTP.MPEGAudio.MixProject do
       {:membrane_caps_rtp,
        git: "git@github.com:membraneframework/membrane-caps-rtp",
        branch: "initial-caps-and-packet"},
-      {:membrane_element_file, "~> 0.2", only: [:test]}
+      {:excoveralls, "~> 0.8", only: :test},
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false}
     ]
   end
 end
