@@ -51,20 +51,18 @@ defmodule Membrane.Element.RTP.MPEGAudio.MixProject do
       links: %{
         "GitHub" => @github_url,
         "Membrane Framework Homepage" => "https://membraneframework.org"
-      },
-      files: ["lib", "mix.exs", "README*", "LICENSE*", ".formatter.exs", "bundlex.exs", "c_src"]
+      }
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
       {:membrane_core, "~> 0.2"},
       {:membrane_caps_rtp,
-       git: "git@github.com:membraneframework/membrane-caps-rtp",
-       branch: "initial-caps-and-packet"},
+       github: "membraneframework/membrane-caps-rtp", branch: "initial-caps-and-packet"},
       {:excoveralls, "~> 0.8", only: :test},
-      {:ex_doc, "~> 0.19", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
+      {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false}
     ]
   end
 end

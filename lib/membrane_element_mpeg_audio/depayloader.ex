@@ -19,15 +19,46 @@ defmodule Membrane.Element.RTP.MPEGAudio.Depayloader do
   alias Membrane.Caps.RTP
 
   def_output_pads output: [
-                    caps: {RTP, raw_payload_type: 14, payload_type: :mpa}
+                    caps: :any
                   ]
 
   def_input_pads input: [
-                   caps: :any,
+                   caps: {RTP, raw_payload_type: 14, payload_type: :mpa},
                    demand_unit: :buffers
                  ]
 
+  def_options default_demand: [
+                type: :number,
+                spec: pos_integer(),
+                description: "Initial demand in buffers made on input pad."
+              ]
+
+  defmodule State do
+    @moduledoc false
+    defstruct [:buffer_size, :default_demand]
+
+    @type t :: %State{
+            buffer_size: pos_integer(),
+            default_demand: pos_integer()
+          }
+  end
+
   @impl true
+  def handle_init(%__MODULE__{default_demand: default_demand}) do
+    {:ok, %State{default_demand: default_demand}}
+  end
+
+  @impl true
+  def handle_caps(:input, _caps, _context, state) do
+    {:ok, state}
+  end
+
+  @impl true
+  def handle_process(:input, buffer, context, %State{buffer_size: nil}) do
+    buffer_size = byte_size(buffer.payload)
+    handle_process(:input, buffer, context, %State{buffer_size: buffer_size})
+  end
+
   def handle_process(:input, buffer, _ctx, state) do
     with %Buffer{
            payload: <<0::16, _offset::16, depayloaded::binary>>
@@ -39,7 +70,19 @@ defmodule Membrane.Element.RTP.MPEGAudio.Depayloader do
   end
 
   @impl true
-  def handle_demand(:output, size, _unit, _ctx, state) do
+  def handle_demand(:output, size, :buffers, _ctx, state) do
     {{:ok, demand: {:input, size}}, state}
+  end
+
+  def handle_demand(:output, _size, :bytes, _context, %State{buffer_size: nil} = state) do
+    %State{default_demand: default_demand} = state
+    {{:ok, demand: {:input, default_demand}}, state}
+  end
+
+  def handle_demand(:output, size, :bytes, _context, %State{buffer_size: buffer_size} = state)
+      when is_number(buffer_size) do
+    # Demand in buffer needs to be bigger or equal to one in bytes
+    demand_size = Float.ceil(size / buffer_size)
+    {{:ok, demand: {:input, demand_size}}, state}
   end
 end
