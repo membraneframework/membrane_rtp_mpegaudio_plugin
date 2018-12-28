@@ -57,12 +57,11 @@ defmodule Membrane.Element.RTP.MPEGAudio.MixProject do
 
   defp deps do
     [
-      {:membrane_core, "~> 0.2"},
-      {:membrane_caps_rtp,
-       github: "membraneframework/membrane-caps-rtp", branch: "initial-caps-and-packet"},
+      {:membrane_core, github: "membraneframework/membrane-core", branch: "testing-tools"},
+      {:membrane_caps_rtp, github: "membraneframework/membrane-caps-rtp"},
       {:excoveralls, "~> 0.8", only: :test},
       {:ex_doc, "~> 0.19", only: :dev, runtime: false},
-      {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false}
+      {:dialyxir, "~> 1.0.0-rc.4", only: [:dev], runtime: false}
     ]
   end
 end

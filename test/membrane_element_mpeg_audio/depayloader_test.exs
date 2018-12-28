@@ -36,11 +36,10 @@ defmodule Membrane.Element.RTP.MPEGAudio.DepayloaderTest do
 
   describe "Depayloader when handling demands" do
     test "when handling demand in bytes and buffer size is not set uses default value" do
-      default_demand = 5
-      state = %State{default_demand: default_demand}
+      state = %State{}
 
       assert Depay.handle_demand(:output, nil, :bytes, nil, state) ==
-               {{:ok, demand: {:input, default_demand}}, state}
+               {{:ok, demand: {:input, 1}}, state}
     end
 
     test "when handling demand in bytes calculates demand when it is divisible by buffer size" do
