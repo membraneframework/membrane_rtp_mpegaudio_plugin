@@ -20,18 +20,12 @@ defmodule Membrane.Element.RTP.MPEGAudio.Depayloader do
 
   @default_demand 1
 
-  def_output_pads(
-    output: [
-      caps: :any
-    ]
-  )
+  def_output_pad :output,
+    caps: :any
 
-  def_input_pads(
-    input: [
-      caps: {RTP, raw_payload_type: 14, payload_type: :mpa},
-      demand_unit: :buffers
-    ]
-  )
+  def_input_pad :input,
+    caps: {RTP, raw_payload_type: 14, payload_type: :mpa},
+    demand_unit: :buffers
 
   defmodule State do
     @moduledoc false
