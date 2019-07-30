@@ -14,7 +14,7 @@ defmodule Membrane.Element.RTP.MPEGAudio.Depayloader do
 
   Frag_offset: Byte offset into the audio frame for the data in this packet.
   """
-  use Membrane.Element.Base.Filter
+  use Membrane.Filter
   alias Membrane.Buffer
   alias Membrane.Caps.RTP
 

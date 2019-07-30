@@ -66,6 +66,7 @@ erl_crash.dump
 *.beam
 
 ### Elixir Patch ###
+.elixir_ls
 ### Linux ###
 *~
 
