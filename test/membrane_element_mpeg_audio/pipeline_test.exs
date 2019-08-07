@@ -1,8 +1,10 @@
 defmodule Membrane.Element.RTP.MPEGAudio.DepayloaderPipelineTest do
   use ExUnit.Case
 
+  import Membrane.Testing.Assertions
+
   alias Membrane.Element.RTP.MPEGAudio.Depayloader
-  alias Membrane.Testing.{DataSource, Pipeline, Sink}
+  alias Membrane.Testing.{Source, Pipeline, Sink}
 
   describe "Pipeline" do
     test "does not crash when processing data" do
@@ -12,16 +14,16 @@ defmodule Membrane.Element.RTP.MPEGAudio.DepayloaderPipelineTest do
       {:ok, pipeline} =
         Pipeline.start_link(%Pipeline.Options{
           elements: [
-            source: %DataSource{data: data},
+            source: %Source{output: data},
             depayloader: Depayloader,
-            sink: %Sink{target: self()}
+            sink: %Sink{}
           ]
         })
 
       Membrane.Pipeline.play(pipeline)
 
       Enum.each(base_range, fn elem ->
-        assert_receive %Membrane.Buffer{payload: <<^elem::256>>}
+        assert_sink_buffer(pipeline, :sink, %Membrane.Buffer{payload: <<^elem::256>>})
       end)
     end
   end

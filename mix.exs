@@ -57,7 +57,7 @@ defmodule Membrane.Element.RTP.MPEGAudio.MixProject do
 
   defp deps do
     [
-      {:membrane_core, "~> 0.3"},
+      {:membrane_core, github: "membraneframework/membrane-core"},
       {:membrane_caps_rtp, "~> 0.1"},
       {:excoveralls, "~> 0.8", only: :test},
       {:ex_doc, "~> 0.19", only: :dev, runtime: false},
