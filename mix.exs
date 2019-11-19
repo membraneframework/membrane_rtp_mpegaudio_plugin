@@ -1,7 +1,7 @@
 defmodule Membrane.Element.RTP.MPEGAudio.MixProject do
   use Mix.Project
 
-  @version "0.2.1"
+  @version "0.3.0"
   @github_url "https://github.com/membraneframework/membrane-element-rtp-mpegaudio"
 
   def project do
@@ -57,7 +57,7 @@ defmodule Membrane.Element.RTP.MPEGAudio.MixProject do
 
   defp deps do
     [
-      {:membrane_core, "~> 0.4"},
+      {:membrane_core, "~> 0.5.0"},
       {:membrane_caps_rtp, "~> 0.1"},
       {:excoveralls, "~> 0.8", only: :test},
       {:ex_doc, "~> 0.19", only: :dev, runtime: false},

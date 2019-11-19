@@ -11,7 +11,7 @@ The package can be installed by adding `membrane_element_rtp_mpegaudio` to your 
 ```elixir
 def deps do
   [
-    {:membrane_element_rtp_mpegaudio, "~> 0.2.0"}
+    {:membrane_element_rtp_mpegaudio, "~> 0.3.0"}
   ]
 end
 ```
@@ -20,7 +20,7 @@ Docs can be found at <https://hexdocs.pm/membrane_element_rtp_mpegaudio>.
 
 ## Copyright and License
 
-Copyright 2018, [Software Mansion](https://swmansion.com/?utm_source=git&utm_medium=readme&utm_campaign=membrane) 
+Copyright 2018, [Software Mansion](https://swmansion.com/?utm_source=git&utm_medium=readme&utm_campaign=membrane)
 
 [![Software Mansion](https://membraneframework.github.io/static/logo/swm_logo_readme.png)](https://swmansion.com/?utm_source=git&utm_medium=readme&utm_campaign=membrane)
 
