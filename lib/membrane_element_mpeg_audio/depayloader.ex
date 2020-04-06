@@ -1,4 +1,4 @@
-defmodule Membrane.Element.RTP.MPEGAudio.Depayloader do
+defmodule Membrane.RTP.MPEGAudio.Depayloader do
   @moduledoc """
   Parses RTP payloads into parsable mpeg chunks based on [RFC 2038](https://tools.ietf.org/html/rfc2038#section-3.5)
 
@@ -16,7 +16,7 @@ defmodule Membrane.Element.RTP.MPEGAudio.Depayloader do
   """
   use Membrane.Filter
   alias Membrane.Buffer
-  alias Membrane.Caps.RTP
+  alias Membrane.RTP
 
   @default_demand 1
 

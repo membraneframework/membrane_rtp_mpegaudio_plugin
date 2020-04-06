@@ -1,4 +1,4 @@
-# Membrane Multimedia Framework: RTP MPEGAudio
+# Membrane Multimedia Framework: RTP MPEGAudio Plugin
 
 This package provides elements that can be used to depayload MPEG audio RTP packets.
 
@@ -11,7 +11,7 @@ The package can be installed by adding `membrane_element_rtp_mpegaudio` to your 
 ```elixir
 def deps do
   [
-    {:membrane_element_rtp_mpegaudio, "~> 0.3.0"}
+    {:membrane_rtp_mpegaudio_plugin, "~> 0.4.0"}
   ]
 end
 ```

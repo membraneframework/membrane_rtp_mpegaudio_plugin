@@ -1,9 +1,9 @@
-defmodule Membrane.Element.RTP.MPEGAudio.DepayloaderPipelineTest do
+defmodule Membrane.RTP.MPEGAudio.DepayloaderPipelineTest do
   use ExUnit.Case
 
   import Membrane.Testing.Assertions
 
-  alias Membrane.Element.RTP.MPEGAudio.Depayloader
+  alias Membrane.RTP.MPEGAudio.Depayloader
   alias Membrane.Testing.{Source, Pipeline, Sink}
 
   describe "Pipeline" do
