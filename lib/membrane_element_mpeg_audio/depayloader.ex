@@ -24,7 +24,7 @@ defmodule Membrane.RTP.MPEGAudio.Depayloader do
     caps: :any
 
   def_input_pad :input,
-    caps: {RTP, raw_payload_type: 14, payload_type: :mpa},
+    caps: {RTP, payload_type: 14},
     demand_unit: :buffers
 
   defmodule State do
