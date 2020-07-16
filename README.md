@@ -1,4 +1,4 @@
-# Membrane Multimedia Framework: RTP MPEGAudio
+# Membrane Multimedia Framework: RTP MPEGAudio Plugin
 
 This package provides elements that can be used to depayload MPEG audio RTP packets.
 
@@ -6,17 +6,17 @@ It is part of [Membrane Multimedia Framework](https://membraneframework.org).
 
 ## Installation
 
-The package can be installed by adding `membrane_element_rtp_mpegaudio` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `membrane_rtp_mpegaudio_plugin` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:membrane_element_rtp_mpegaudio, "~> 0.3.0"}
+    {:membrane_rtp_mpegaudio_plugin, "~> 0.4.0-alpha"}
   ]
 end
 ```
 
-Docs can be found at <https://hexdocs.pm/membrane_element_rtp_mpegaudio>.
+Docs can be found at <https://hexdocs.pm/membrane_rtp_mpegaudio_plugin>.
 
 ## Copyright and License
 

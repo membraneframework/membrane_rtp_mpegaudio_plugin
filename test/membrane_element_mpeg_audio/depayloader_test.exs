@@ -1,7 +1,7 @@
-defmodule Membrane.Element.RTP.MPEGAudio.DepayloaderTest do
+defmodule Membrane.RTP.MPEGAudio.DepayloaderTest do
   use ExUnit.Case
   alias Membrane.Buffer
-  alias Membrane.Element.RTP.MPEGAudio.Depayloader, as: Depay
+  alias Membrane.RTP.MPEGAudio.Depayloader, as: Depay
   alias Depay.State
 
   describe "Depayloader when handling process" do

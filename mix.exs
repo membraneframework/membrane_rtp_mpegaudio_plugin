@@ -1,29 +1,26 @@
-defmodule Membrane.Element.RTP.MPEGAudio.MixProject do
+defmodule Membrane.RTP.MPEGAudio.MixProject do
   use Mix.Project
 
-  @version "0.3.0"
-  @github_url "https://github.com/membraneframework/membrane-element-rtp-mpegaudio"
+  @version "0.4.0-alpha"
+  @github_url "https://github.com/membraneframework/membrane_rtp_mpegaudio_plugin"
 
   def project do
     [
-      app: :membrane_element_rtp_mpeguadio,
+      app: :membrane_rtp_mpegaudio_plugin,
       version: @version,
-      elixir: "~> 1.7",
+      elixir: "~> 1.9",
       elixirc_paths: elixirc_paths(Mix.env()),
-      start_permanent: Mix.env() == :prod,
-      description: "Membrane Multimedia Framework (RTP MPEGAudio Elements)",
+      deps: deps(),
+
+      # Hex
+      description: "Membrane Multimedia Framework (RTP MPEGAudio Plugin)",
       package: package(),
-      name: "Membrane Element: RTP MPEGAudio",
+
+      # docs
+      name: "Membrane Plugin: RTP MPEGAudio",
       source_url: @github_url,
       docs: docs(),
-      homepage_url: "https://membraneframework.org",
-      deps: deps(),
-      preferred_cli_env: [
-        coveralls: :test,
-        "coveralls.detail": :test,
-        "coveralls.post": :test,
-        "coveralls.html": :test
-      ]
+      homepage_url: "https://membraneframework.org"
     ]
   end
 
@@ -58,10 +55,11 @@ defmodule Membrane.Element.RTP.MPEGAudio.MixProject do
   defp deps do
     [
       {:membrane_core, "~> 0.5.0"},
-      {:membrane_caps_rtp, "~> 0.1"},
-      {:excoveralls, "~> 0.8", only: :test},
-      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
-      {:dialyxir, "~> 1.0.0-rc.4", only: [:dev], runtime: false}
+      {:membrane_rtp_format, "~> 0.2.0-alpha"},
+
+      # dev
+      {:ex_doc, "~> 0.21", only: :dev, runtime: false},
+      {:dialyxir, "~> 1.0.0", only: :dev, runtime: false}
     ]
   end
 end
