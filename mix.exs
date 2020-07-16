@@ -1,8 +1,8 @@
 defmodule Membrane.RTP.MPEGAudio.MixProject do
   use Mix.Project
 
-  @version "0.4.0"
-  @github_url "https://github.com/membraneframework/membrane-element-rtp-mpegaudio"
+  @version "0.4.0-alpha"
+  @github_url "https://github.com/membraneframework/membrane_rtp_mpegaudio_plugin"
 
   def project do
     [
