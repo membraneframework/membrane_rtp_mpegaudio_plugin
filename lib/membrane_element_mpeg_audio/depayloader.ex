@@ -15,13 +15,13 @@ defmodule Membrane.RTP.MPEGAudio.Depayloader do
   Frag_offset: Byte offset into the audio frame for the data in this packet.
   """
   use Membrane.Filter
-  alias Membrane.{Buffer, RTP, Stream}
+  alias Membrane.{Buffer, RTP, RemoteStream}
   alias Membrane.Caps.Audio.MPEG
 
   @default_demand 1
 
   def_input_pad :input, caps: RTP, demand_unit: :buffers
-  def_output_pad :output, caps: {Stream, content: MPEG, type: :packet_stream}
+  def_output_pad :output, caps: {RemoteStream, content_format: MPEG, type: :packetized}
 
   defmodule State do
     @moduledoc false
