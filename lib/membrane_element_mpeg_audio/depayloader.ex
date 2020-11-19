@@ -34,7 +34,8 @@ defmodule Membrane.RTP.MPEGAudio.Depayloader do
 
   @impl true
   def handle_caps(:input, _caps, _context, state) do
-    {:ok, state}
+    caps = %RemoteStream{content_format: MPEG, type: :packetized}
+    {{:ok, caps: {:output, caps}}, state}
   end
 
   @impl true
