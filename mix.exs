@@ -26,7 +26,8 @@ defmodule Membrane.RTP.MPEGAudio.MixProject do
 
   def application do
     [
-      extra_applications: []
+      extra_applications: [],
+      mod: {Membrane.RTP.MPEGAudio.Plugin.App, []}
     ]
   end
 
@@ -55,7 +56,9 @@ defmodule Membrane.RTP.MPEGAudio.MixProject do
   defp deps do
     [
       {:membrane_core, "~> 0.5.0"},
-      {:membrane_rtp_format, "~> 0.2.0-alpha"},
+      {:membrane_rtp_format, "~> 0.3.0"},
+      {:membrane_remote_stream_format, "~> 0.1.0"},
+      {:membrane_caps_audio_mpeg, "~> 0.2.0"},
 
       # dev
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
