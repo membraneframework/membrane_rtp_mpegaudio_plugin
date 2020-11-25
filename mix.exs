@@ -13,11 +13,11 @@ defmodule Membrane.RTP.MPEGAudio.MixProject do
       deps: deps(),
 
       # Hex
-      description: "Membrane Multimedia Framework (RTP MPEGAudio Plugin)",
+      description: "Membrane RTP MPEG Audio depayloader",
       package: package(),
 
       # docs
-      name: "Membrane Plugin: RTP MPEGAudio",
+      name: "Membrane RTP MPEG Audio plugin",
       source_url: @github_url,
       docs: docs(),
       homepage_url: "https://membraneframework.org"
