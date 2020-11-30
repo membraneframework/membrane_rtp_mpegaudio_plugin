@@ -1,9 +1,10 @@
-# Membrane Multimedia Framework: RTP MPEGAudio Plugin
+# Membrane RTP MPEG Audio plugin
 
 [![Hex.pm](https://img.shields.io/hexpm/v/membrane_rtp_mpegaudio_plugin.svg)](https://hex.pm/packages/membrane_rtp_mpegaudio_plugin)
+[![API Docs](https://img.shields.io/badge/api-docs-yellow.svg?style=flat)](https://hexdocs.pm/membrane_rtp_mpegaudio_plugin/)
 [![CircleCI](https://circleci.com/gh/membraneframework/membrane_rtp_plugin.svg?style=svg)](https://circleci.com/gh/membraneframework/membrane_rtp_mpegaudio_plugin)
 
-This package provides elements that can be used to depayload MPEG audio RTP packets.
+Membrane RTP MPEG Audio depayloader.
 
 It is part of [Membrane Multimedia Framework](https://membraneframework.org).
 
@@ -19,10 +20,11 @@ def deps do
 end
 ```
 
-Docs can be found at <https://hexdocs.pm/membrane_rtp_mpegaudio_plugin>.
+Docs can be found at [HexDocs](https://hexdocs.pm/membrane_rtp_mpegaudio_plugin).
 
 ## Usage
-TODO
+
+This depayloader registers itself as a default depayloader for MPEG Audio (MPA) [RTP payload format](https://hexdocs.pm/membrane_rtp_format/Membrane.RTP.PayloadFormat.html) and thus can be automatically used by [Membrane RTP plugin](https://hexdocs.pm/membrane_rtp_plugin) whenever added to dependencies. Of course it can be manually linked in a custom pipeline too.
 
 ## Copyright and License
 
