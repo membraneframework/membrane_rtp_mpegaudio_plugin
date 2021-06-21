@@ -3,6 +3,7 @@ defmodule Membrane.RTP.MPEGAudio.DepayloaderPipelineTest do
 
   import Membrane.Testing.Assertions
 
+  alias Membrane.RTP
   alias Membrane.RTP.MPEGAudio.Depayloader
   alias Membrane.Testing.{Source, Pipeline, Sink}
 
@@ -14,7 +15,7 @@ defmodule Membrane.RTP.MPEGAudio.DepayloaderPipelineTest do
       {:ok, pipeline} =
         Pipeline.start_link(%Pipeline.Options{
           elements: [
-            source: %Source{output: data},
+            source: %Source{output: data, caps: %RTP{}},
             depayloader: Depayloader,
             sink: %Sink{}
           ]
@@ -25,6 +26,8 @@ defmodule Membrane.RTP.MPEGAudio.DepayloaderPipelineTest do
       Enum.each(base_range, fn elem ->
         assert_sink_buffer(pipeline, :sink, %Membrane.Buffer{payload: <<^elem::256>>})
       end)
+
+      Membrane.Pipeline.stop_and_terminate(pipeline, blocking?: true)
     end
   end
 end
