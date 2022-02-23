@@ -15,7 +15,7 @@ The package can be installed by adding `membrane_rtp_mpegaudio_plugin` to your l
 ```elixir
 def deps do
   [
-    {:membrane_rtp_mpegaudio_plugin, "~> 0.7.0"}
+    {:membrane_rtp_mpegaudio_plugin, "~> 0.8.0"}
   ]
 end
 ```
