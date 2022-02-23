@@ -1,14 +1,14 @@
 defmodule Membrane.RTP.MPEGAudio.MixProject do
   use Mix.Project
 
-  @version "0.7.0"
+  @version "0.8.0"
   @github_url "https://github.com/membraneframework/membrane_rtp_mpegaudio_plugin"
 
   def project do
     [
       app: :membrane_rtp_mpegaudio_plugin,
       version: @version,
-      elixir: "~> 1.9",
+      elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
       deps: deps(),
 
@@ -37,7 +37,8 @@ defmodule Membrane.RTP.MPEGAudio.MixProject do
   defp docs do
     [
       main: "readme",
-      extras: ["README.md"],
+      extras: ["README.md", LICENSE: [title: "License"]],
+      formatters: ["html"],
       source_ref: "v#{@version}"
     ]
   end
@@ -45,7 +46,7 @@ defmodule Membrane.RTP.MPEGAudio.MixProject do
   defp package do
     [
       maintainers: ["Membrane Team"],
-      licenses: ["Apache 2.0"],
+      licenses: ["Apache-2.0"],
       links: %{
         "GitHub" => @github_url,
         "Membrane Framework Homepage" => "https://membraneframework.org"
@@ -55,13 +56,14 @@ defmodule Membrane.RTP.MPEGAudio.MixProject do
 
   defp deps do
     [
-      {:membrane_core, "~> 0.8.0"},
+      {:membrane_core, "~> 0.9.0"},
       {:membrane_rtp_format, "~> 0.3.0"},
       {:membrane_caps_audio_mpeg, "~> 0.2.0"},
 
       # dev
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
-      {:dialyxir, "~> 1.0.0", only: :dev, runtime: false}
+      {:dialyxir, "~> 1.0", only: :dev, runtime: false},
+      {:credo, "~> 1.5", only: :dev, runtime: false}
     ]
   end
 end

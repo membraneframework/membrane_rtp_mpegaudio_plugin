@@ -3,6 +3,7 @@ defmodule Membrane.RTP.MPEGAudio.Plugin.App do
   use Application
   alias Membrane.RTP.{MPEGAudio, PayloadFormat}
 
+  @impl true
   def start(_type, _args) do
     PayloadFormat.register(%PayloadFormat{
       encoding_name: :MPA,
