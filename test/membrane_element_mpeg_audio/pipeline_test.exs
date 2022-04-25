@@ -21,13 +21,11 @@ defmodule Membrane.RTP.MPEGAudio.DepayloaderPipelineTest do
           ]
         })
 
-      Membrane.Pipeline.play(pipeline)
-
       Enum.each(base_range, fn elem ->
         assert_sink_buffer(pipeline, :sink, %Membrane.Buffer{payload: <<^elem::256>>})
       end)
 
-      Membrane.Pipeline.stop_and_terminate(pipeline, blocking?: true)
+      Membrane.Pipeline.terminate(pipeline, blocking?: true)
     end
   end
 end
