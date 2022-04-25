@@ -21,7 +21,6 @@ defmodule Membrane.RTP.MPEGAudio.DepayloaderPipelineTest do
           ]
         })
 
-
       Enum.each(base_range, fn elem ->
         assert_sink_buffer(pipeline, :sink, %Membrane.Buffer{payload: <<^elem::256>>})
       end)
