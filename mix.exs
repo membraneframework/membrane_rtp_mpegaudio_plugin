@@ -21,7 +21,7 @@ defmodule Membrane.RTP.MPEGAudio.MixProject do
       name: "Membrane RTP MPEG Audio plugin",
       source_url: @github_url,
       docs: docs(),
-      homepage_url: "https://membraneframework.org"
+      homepage_url: "https://membrane.stream"
     ]
   end
 
@@ -50,7 +50,7 @@ defmodule Membrane.RTP.MPEGAudio.MixProject do
       licenses: ["Apache-2.0"],
       links: %{
         "GitHub" => @github_url,
-        "Membrane Framework Homepage" => "https://membraneframework.org"
+        "Membrane Framework Homepage" => "https://membrane.stream"
       }
     ]
   end
