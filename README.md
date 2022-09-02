@@ -6,7 +6,7 @@
 
 Membrane RTP MPEG Audio depayloader.
 
-It is part of [Membrane Multimedia Framework](https://membraneframework.org).
+It is part of [Membrane Multimedia Framework](https://membrane.stream).
 
 ## Installation
 

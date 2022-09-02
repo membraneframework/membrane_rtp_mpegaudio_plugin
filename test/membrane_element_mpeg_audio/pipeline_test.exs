@@ -5,7 +5,7 @@ defmodule Membrane.RTP.MPEGAudio.DepayloaderPipelineTest do
 
   alias Membrane.RTP
   alias Membrane.RTP.MPEGAudio.Depayloader
-  alias Membrane.Testing.{Source, Pipeline, Sink}
+  alias Membrane.Testing.{Pipeline, Sink, Source}
 
   describe "Pipeline" do
     test "does not crash when processing data" do
