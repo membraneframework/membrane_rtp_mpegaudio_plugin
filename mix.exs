@@ -11,6 +11,7 @@ defmodule Membrane.RTP.MPEGAudio.MixProject do
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
       deps: deps(),
+      dialyzer: dialyzer(),
 
       # Hex
       description: "Membrane RTP MPEG Audio depayloader",
@@ -52,6 +53,19 @@ defmodule Membrane.RTP.MPEGAudio.MixProject do
         "Membrane Framework Homepage" => "https://membraneframework.org"
       }
     ]
+  end
+
+  defp dialyzer() do
+    opts = [
+      flags: [:error_handling]
+    ]
+
+    if System.get_env("CI") == "true" do
+      # Store PLTs in cacheable directory for CI
+      [plt_local_path: "priv/plts", plt_core_path: "priv/plts"] ++ opts
+    else
+      opts
+    end
   end
 
   defp deps do
