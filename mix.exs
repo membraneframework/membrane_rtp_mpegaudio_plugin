@@ -72,7 +72,8 @@ defmodule Membrane.RTP.MPEGAudio.MixProject do
     [
       {:membrane_core, "~> 0.11.0"},
       # {:membrane_rtp_format, "~> 0.5.0"},
-      {:membrane_rtp_format, github: "membraneframework/membrane_rtp_format", branch: "core-v0.11"},
+      {:membrane_rtp_format,
+       github: "membraneframework/membrane_rtp_format", branch: "core-v0.11"},
       {:membrane_caps_audio_mpeg, "~> 0.2.0"},
 
       # dev
