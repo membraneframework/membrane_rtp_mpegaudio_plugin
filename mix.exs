@@ -72,7 +72,7 @@ defmodule Membrane.RTP.MPEGAudio.MixProject do
     [
       {:membrane_core, "~> 0.11.0"},
       {:membrane_rtp_format, "~> 0.6.0"},
-      {:membrane_caps_audio_mpeg, "~> 0.2.0"},
+      {:membrane_mpegaudio_format, "~> 0.3.0"},
 
       # dev
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
