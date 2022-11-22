@@ -30,7 +30,7 @@ defmodule Membrane.RTP.MPEGAudio.Depayloader do
   end
 
   @impl true
-  def handle_stream_format(:input, _stream_format, _context, state) do
+  def handle_stream_format(:input, _stream_format, _ctx, state) do
     stream_format = %RemoteStream{content_format: MPEG, type: :packetized}
     {[stream_format: {:output, stream_format}], state}
   end
@@ -42,7 +42,7 @@ defmodule Membrane.RTP.MPEGAudio.Depayloader do
          } <- buffer do
       {[buffer: {:output, %Buffer{buffer | payload: depayloaded}}], state}
     else
-      %Buffer{} -> raise "Error: invalid payload"
+      %Buffer{} -> raise "Error: invalid payload: #{inspect(buffer.payload)}"
     end
   end
 end
