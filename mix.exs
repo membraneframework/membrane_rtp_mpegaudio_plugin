@@ -1,14 +1,14 @@
 defmodule Membrane.RTP.MPEGAudio.MixProject do
   use Mix.Project
 
-  @version "0.11.0"
+  @version "0.12.0"
   @github_url "https://github.com/membraneframework/membrane_rtp_mpegaudio_plugin"
 
   def project do
     [
       app: :membrane_rtp_mpegaudio_plugin,
       version: @version,
-      elixir: "~> 1.12",
+      elixir: "~> 1.13",
       elixirc_paths: elixirc_paths(Mix.env()),
       deps: deps(),
       dialyzer: dialyzer(),
@@ -70,9 +70,9 @@ defmodule Membrane.RTP.MPEGAudio.MixProject do
 
   defp deps do
     [
-      {:membrane_core, "~> 0.10.0"},
-      {:membrane_rtp_format, "~> 0.5.0"},
-      {:membrane_caps_audio_mpeg, "~> 0.2.0"},
+      {:membrane_core, "~> 0.11.0"},
+      {:membrane_rtp_format, "~> 0.6.0"},
+      {:membrane_mpegaudio_format, "~> 0.3.0"},
 
       # dev
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
