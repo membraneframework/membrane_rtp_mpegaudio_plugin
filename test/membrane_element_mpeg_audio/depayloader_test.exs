@@ -11,7 +11,7 @@ defmodule Membrane.RTP.MPEGAudio.DepayloaderTest do
     test "returns error when incoming payload is not valid", %{state: state} do
       invalid_buffer = %Buffer{payload: <<0::16>>}
 
-      assert_raise RuntimeError, "Error: invalid payload", fn ->
+      assert_raise RuntimeError, ~r/Error.*invalid.*payload/, fn ->
         Depayloader.handle_process(:input, invalid_buffer, nil, state)
       end
     end
