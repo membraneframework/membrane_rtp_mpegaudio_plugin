@@ -15,7 +15,7 @@ defmodule Membrane.RTP.MPEGAudio.DepayloaderPipelineTest do
 
       {:ok, _supervisor_pid, pipeline} =
         Pipeline.start_link(
-          structure: [
+          spec: [
             child(:source, %Source{output: data, stream_format: %RTP{}})
             |> child(:depayloader, Depayloader)
             |> child(:sink, %Sink{})
@@ -26,7 +26,7 @@ defmodule Membrane.RTP.MPEGAudio.DepayloaderPipelineTest do
         assert_sink_buffer(pipeline, :sink, %Membrane.Buffer{payload: <<^elem::256>>})
       end)
 
-      Membrane.Pipeline.terminate(pipeline, blocking?: true)
+      Membrane.Pipeline.terminate(pipeline)
     end
   end
 end

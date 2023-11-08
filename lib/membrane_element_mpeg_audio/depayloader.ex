@@ -18,11 +18,10 @@ defmodule Membrane.RTP.MPEGAudio.Depayloader do
   alias Membrane.{Buffer, RemoteStream, RTP}
   alias Membrane.Caps.Audio.MPEG
 
-  def_input_pad :input, accepted_format: RTP, demand_mode: :auto
+  def_input_pad :input, accepted_format: RTP
 
   def_output_pad :output,
-    accepted_format: %RemoteStream{content_format: MPEG, type: :packetized},
-    demand_mode: :auto
+    accepted_format: %RemoteStream{content_format: MPEG, type: :packetized}
 
   @impl true
   def handle_init(_ctx, _opts) do
@@ -36,10 +35,8 @@ defmodule Membrane.RTP.MPEGAudio.Depayloader do
   end
 
   @impl true
-  def handle_process(:input, buffer, _ctx, state) do
-    with %Buffer{
-           payload: <<0::16, _offset::16, depayloaded::binary>>
-         } <- buffer do
+  def handle_buffer(:input, buffer, _ctx, state) do
+    with %Buffer{payload: <<0::16, _offset::16, depayloaded::binary>>} <- buffer do
       {[buffer: {:output, %Buffer{buffer | payload: depayloaded}}], state}
     else
       %Buffer{} -> raise "Error: invalid payload: #{inspect(buffer.payload)}"
