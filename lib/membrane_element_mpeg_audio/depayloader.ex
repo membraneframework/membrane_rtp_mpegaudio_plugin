@@ -18,7 +18,7 @@ defmodule Membrane.RTP.MPEGAudio.Depayloader do
   alias Membrane.{Buffer, RemoteStream, RTP}
   alias Membrane.Caps.Audio.MPEG
 
-  def_input_pad :input, accepted_format: RTP
+  def_input_pad :input, accepted_format: %RTP{payload_format: format} when format in [nil, MPEG]
 
   def_output_pad :output,
     accepted_format: %RemoteStream{content_format: MPEG, type: :packetized}
