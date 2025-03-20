@@ -15,13 +15,13 @@ defmodule Membrane.RTP.MPEGAudio.Depayloader do
   Frag_offset: Byte offset into the audio frame for the data in this packet.
   """
   use Membrane.Filter
-  alias Membrane.{Buffer, RemoteStream, RTP}
-  alias Membrane.Caps.Audio.MPEG
+  alias Membrane.{Buffer, MPEGAudio, RemoteStream, RTP}
 
-  def_input_pad :input, accepted_format: %RTP{payload_format: format} when format in [nil, MPEG]
+  def_input_pad :input,
+    accepted_format: %RTP{payload_format: format} when format in [nil, MPEGAudio]
 
   def_output_pad :output,
-    accepted_format: %RemoteStream{content_format: MPEG, type: :packetized}
+    accepted_format: %RemoteStream{content_format: MPEGAudio, type: :packetized}
 
   @impl true
   def handle_init(_ctx, _opts) do
@@ -30,7 +30,7 @@ defmodule Membrane.RTP.MPEGAudio.Depayloader do
 
   @impl true
   def handle_stream_format(:input, _stream_format, _ctx, state) do
-    stream_format = %RemoteStream{content_format: MPEG, type: :packetized}
+    stream_format = %RemoteStream{content_format: MPEGAudio, type: :packetized}
     {[stream_format: {:output, stream_format}], state}
   end
 
