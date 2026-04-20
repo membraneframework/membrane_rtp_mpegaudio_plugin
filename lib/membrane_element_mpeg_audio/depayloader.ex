@@ -37,7 +37,7 @@ defmodule Membrane.RTP.MPEGAudio.Depayloader do
   @impl true
   def handle_buffer(:input, buffer, _ctx, state) do
     with %Buffer{payload: <<0::16, _offset::16, depayloaded::binary>>} <- buffer do
-      {[buffer: {:output, %Buffer{buffer | payload: depayloaded}}], state}
+      {[buffer: {:output, %{buffer | payload: depayloaded}}], state}
     else
       %Buffer{} -> raise "Error: invalid payload: #{inspect(buffer.payload)}"
     end

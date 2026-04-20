@@ -57,11 +57,13 @@ defmodule Membrane.RTP.MPEGAudio.MixProject do
 
   defp dialyzer() do
     opts = [
-      flags: [:error_handling]
+      flags: [:error_handling],
+      plt_add_apps: [:syntax_tools]
     ]
 
     if System.get_env("CI") == "true" do
       # Store PLTs in cacheable directory for CI
+      File.mkdir_p!(Path.join([__DIR__, "priv", "plts"]))
       [plt_local_path: "priv/plts", plt_core_path: "priv/plts"] ++ opts
     else
       opts
@@ -75,9 +77,9 @@ defmodule Membrane.RTP.MPEGAudio.MixProject do
       {:membrane_mpegaudio_format, "~> 0.3.0"},
 
       # dev
-      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
-      {:dialyxir, ">= 0.0.0", only: :dev, runtime: false},
-      {:credo, ">= 0.0.0", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.34", only: :dev, runtime: false},
+      {:dialyxir, "~> 1.4", only: :dev, runtime: false},
+      {:credo, "~> 1.7", only: :dev, runtime: false}
     ]
   end
 end
