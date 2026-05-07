@@ -7,25 +7,20 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_test:
-    uses: membraneframework-labs/membrane-actions/.github/workflows/build-test.yml@main
-    with:
-      cache-version: 3
+  # build_test:
+  #   uses: membraneframework-labs/membrane-actions/.github/workflows/build-test.yml@main
+  #   with:
+  #     cache-version: 3
+  #
+  # test:
+  #   uses: membraneframework-labs/membrane-actions/.github/workflows/test.yml@main
+  #   with:
+  #     cache-version: 3
+  #
+  # lint:
+  #   uses: membraneframework-labs/membrane-actions/.github/workflows/lint.yml@main
+  #   with:
+  #     cache-version: 3
 
-  test:
-    uses: membraneframework-labs/membrane-actions/.github/workflows/test.yml@main
-    with:
-      cache-version: 3
-
-  lint:
-    uses: membraneframework-labs/membrane-actions/.github/workflows/lint.yml@main
-    with:
-      cache-version: 3
-
-  hex_publish:
-    needs: [build_test, test, lint]
-    uses: membraneframework-labs/membrane-actions/.github/workflows/hex-publish.yml@main
-    with:
-      cache-version: 3
-    secrets:
-      HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
+  gh_release:
+    uses: membraneframework-labs/membrane-actions/.github/workflows/github-release.yml@gh-release
