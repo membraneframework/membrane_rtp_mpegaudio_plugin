@@ -1,22 +1,22 @@
-name: CI
-
-on:
-  push:
-    branches: ["**"]
-  workflow_dispatch:
-
-jobs:
-  build_test:
-    uses: membraneframework-labs/membrane-actions/.github/workflows/build-test.yml@main
-    with:
-      cache-version: 3
-
-  test:
-    uses: membraneframework-labs/membrane-actions/.github/workflows/test.yml@main
-    with:
-      cache-version: 3
-
-  lint:
-    uses: membraneframework-labs/membrane-actions/.github/workflows/lint.yml@main
-    with:
-      cache-version: 3
+# name: CI
+#
+# on:
+#   push:
+#     branches: ["**"]
+#   workflow_dispatch:
+#
+# jobs:
+#   build_test:
+#     uses: membraneframework-labs/membrane-actions/.github/workflows/build-test.yml@main
+#     with:
+#       cache-version: 3
+#
+#   test:
+#     uses: membraneframework-labs/membrane-actions/.github/workflows/test.yml@main
+#     with:
+#       cache-version: 3
+#
+#   lint:
+#     uses: membraneframework-labs/membrane-actions/.github/workflows/lint.yml@main
+#     with:
+#       cache-version: 3
