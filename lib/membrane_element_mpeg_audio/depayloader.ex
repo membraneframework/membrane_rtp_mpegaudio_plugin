@@ -35,7 +35,7 @@ defmodule Membrane.RTP.MPEGAudio.Depayloader do
   end
 
   @impl true
-  def handle_buffer(:input, buffer, _ctx, state) do
+  def handle_buffer(:input, %Buffer{} = buffer, _ctx, state) do
     with %Buffer{payload: <<0::16, _offset::16, depayloaded::binary>>} <- buffer do
       {[buffer: {:output, %Buffer{buffer | payload: depayloaded}}], state}
     else
